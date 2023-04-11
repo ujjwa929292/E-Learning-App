@@ -80,8 +80,8 @@ const OnboardingScreen = () => {
 
     return (
         <Onboarding
-            onSkip={() => navigation.navigate('MainPage')}
-            onDone={() => navigation.navigate('MainPage')}
+            onSkip={() => navigation.navigate('Main')}
+            onDone={() => navigation.replace('Main')}
             DotComponent={DotComponent}
             NextButtonComponent={NextButtonComponent}
             DoneButtonComponent={DoneButtonComponent}

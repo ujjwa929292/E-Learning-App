@@ -1,180 +1,150 @@
-import { View, Text, Button, StyleSheet, SafeAreaView, Image } from 'react-native'
-import React, { useEffect } from 'react'
-import {
-    Title,
-    Caption,
-    TouchableRipple,
-} from 'react-native-paper'
+import React from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Switch, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { useState } from 'react';
 
 const Profile = () => {
     const navigation = useNavigation();
+    const [darkMode, setDarkMode] = useState(false);
+    const [notifications, setNotifications] = useState(true);
+
     return (
-        <GestureHandlerRootView style={styles.container}>
-            <View style={styles.userInfoSection}>
-                <View style={{ flexDirection: 'row', marginTop: 0 }}>
-                    <View>
-                        <Image style={{
-                            paddingTop: 10,
-                            width: 100,
-                            height: 100,
-                        }} source={require('../images/user.png')} />
+        <ScrollView>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Image
+                        source={require('../images/user.png')}
+                        style={styles.profilePicture}
+                    />
+                    <Text style={styles.username}>John Doe</Text>
+                    <TouchableOpacity
+                        onPress={() => { navigation.navigate('ProfileEdit') }}
+                        style={styles.editProfileButton}>
+                        <Text style={styles.editProfileButtonText}>Edit Profile</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.userInfoSection}>
+                    <View style={styles.row}>
+                        <Icon name="map-marker-radius" color="black" size={20} />
+                        <Text style={{ color: "#B27C7C", marginLeft: 20 }}>Delhi, India</Text>
                     </View>
-                    <View style={{ marginLeft: 50 }}>
-                        <Title style={[styles.title, {
-                            marginTop: 20,
-                            marginBottom: 2,
-                        }]}>Ujjwal Vij</Title>
-                        <Caption style={styles.caption}>@ujjwal_vij_69</Caption>
+                    <View style={styles.row}>
+                        <Icon name="phone" color="black" size={20} />
+                        <Text style={{ color: "#B27C7C", marginLeft: 20 }}>+91-874596XXXX</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Icon name="email" color="black" size={20} />
+                        <Text style={{ color: "#B27C7C", marginLeft: 20 }}>uvij027@gmail.com</Text>
                     </View>
                 </View>
-            </View>
-
-            <View style={styles.userInfoSection}>
-                <View style={styles.row}>
-                    <Icon name="map-marker-radius" color="#B27C7C" size={20} />
-                    <Text style={{ color: "#B27C7C", marginLeft: 20 }}>Delhi, India</Text>
-                </View>
-                <View style={styles.row}>
-                    <Icon name="phone" color="#B27C7C" size={20} />
-                    <Text style={{ color: "#B27C7C", marginLeft: 20 }}>+91-874596XXXX</Text>
-                </View>
-                <View style={styles.row}>
-                    <Icon name="email" color="#B27C7C" size={20} />
-                    <Text style={{ color: "#B27C7C", marginLeft: 20 }}>uvij027@gmail.com</Text>
-                </View>
-            </View>
-
-            <View style={styles.infoBoxWrapper}>
-                <View style={[styles.infoBox, {
-                    borderRightColor: '#dddddd',
-                    borderRightWidth: 1
-                }]}>
-                    <Title>127</Title>
-                    <Caption>Total Number of Cources</Caption>
-                </View>
-                <View style={styles.infoBox}>
-                    <Title>126</Title>
-                    <Caption>Total Number of Cources</Caption>
-                </View>
-            </View>
-            <View style={styles.infoBoxWrapper2}>
-                <View style={[styles.infoBox, {
-                    borderRightColor: '#dddddd',
-                    borderRightWidth: 1
-                }]}>
-                    <Title>127</Title>
-                    <Caption>Total Number of Cources</Caption>
-                </View>
-                <View style={styles.infoBox}>
-                    <Title>126</Title>
-                    <Caption>Total Number of Cources</Caption>
-                </View>
-            </View>
-
-            <View style={styles.menuWrapper}>
-            <TouchableRipple onPress={() =>
-                    navigation.navigate('PremiumScreen')
-                }>
-                    <View style={styles.menuItem}>
-                        <FeatherIcon
-                            color="#4578DF"
-                            name="star"
-                            size={25}
+                <View style={styles.container}>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('ProfileEdit')}
+                        style={styles.optionContainer}>
+                        <FeatherIcon name="user" size={24} style={styles.icon} />
+                        <Text style={styles.optionText}>Edit Profile</Text>
+                        <FeatherIcon name="chevron-right" size={24} style={styles.arrowIcon} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.optionContainer}>
+                        <FeatherIcon name="lock" size={24} style={styles.icon} />
+                        <Text style={styles.optionText}>Change Password</Text>
+                        <FeatherIcon name="chevron-right" size={24} style={styles.arrowIcon} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.optionContainer}>
+                        <FeatherIcon name="download" size={24} style={styles.icon} />
+                        <Text style={styles.optionText}>Downloads</Text>
+                        <FeatherIcon name="chevron-right" size={24} style={styles.arrowIcon} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.optionContainer}>
+                        <FeatherIcon name="bell" size={24} style={styles.icon} />
+                        <Text style={styles.optionText}>Notifications</Text>
+                        <Switch
+                            value={notifications}
+                            onValueChange={(value) => setNotifications(value)}
                         />
-                        <Text style={styles.menuItemText}>Premium</Text>
-                    </View>
-                </TouchableRipple>
-                <TouchableRipple onPress={() =>
-                    navigation.navigate('Certificates')
-                }>
-                    <View style={styles.menuItem}>
-                        <FeatherIcon
-                            color="#4578DF"
-                            name="award"
-                            size={25}
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.optionContainer}>
+                        <FeatherIcon name="mail" size={24} style={styles.icon} />
+                        <Text style={styles.optionText}>Contact Us</Text>
+                        <FeatherIcon name="chevron-right" size={24} style={styles.arrowIcon} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.optionContainer}>
+                        <FeatherIcon name="moon" size={24} style={styles.icon} />
+                        <Text style={styles.optionText}>Dark Mode</Text>
+                        <Switch
+                            value={darkMode}
+                            onValueChange={(value) => setDarkMode(value)}
                         />
-                        <Text style={styles.menuItemText}>Certificates</Text>
-                    </View>
-                </TouchableRipple>
-                <TouchableRipple onPress={() =>
-                    navigation.navigate('SettingsScreen')
-                }>
-                    <View style={styles.menuItem}>
-                        <FeatherIcon
-                            color="#4578DF"
-                            name="settings"
-                            size={25}
-                        />
-                        <Text style={styles.menuItemText}>Settings</Text>
-                    </View>
-                </TouchableRipple>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.optionContainer}>
+                        <FeatherIcon name="flag" size={24} style={styles.icon} />
+                        <Text style={styles.optionText}>Report Bug</Text>
+                        <FeatherIcon name="chevron-right" size={24} style={styles.arrowIcon} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.optionContainer1}>
+                        <FeatherIcon name="log-out" size={24} style={styles.icon} />
+                        <Text style={styles.optionText}>Log Out</Text>
+                        <FeatherIcon name="chevron-right" size={24} style={styles.arrowIcon} />
+                    </TouchableOpacity>
+                </View>
             </View>
-        </GestureHandlerRootView>
+        </ScrollView>
     );
 };
-
-
-export default Profile
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fff',
+        padding: 5,
     },
-    userInfoSection: {
-        paddingHorizontal: 30,
-        marginBottom: 25,
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 20,
     },
-    title: {
+    profilePicture: {
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+    },
+    username: {
         fontSize: 24,
         fontWeight: 'bold',
+        marginLeft: 20,
     },
-    caption: {
-        fontSize: 14,
-        lineHeight: 14,
-        fontWeight: '500',
-        color: "#B27C7C"
+    editProfileButton: {
+        backgroundColor: '#2e64e5',
+        borderRadius: 20,
+        padding: 10,
+        marginLeft: 'auto',
     },
-    box1: {
-        color: "#FFFFFF",
-        backgroundColor: "#4578DF",
-        width: '45%',
-        padding: 11,
-        margin: 5,
-        paddingBottom: 60,
-        marginLeft: 13,
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
+    editProfileButtonText: {
+        color: '#fff',
+        fontSize: 16,
         fontWeight: 'bold',
-        paddingTop: 15,
     },
-    Icon: {
+    body: {
+        padding: 20,
     },
-    box2: {
-        color: "#FFFFFF",
-        backgroundColor: "#C68642",
-        width: '45%',
-        padding: 11,
-        margin: 5,
-        paddingBottom: 30,
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
+    sectionTitle: {
+        fontSize: 20,
         fontWeight: 'bold',
-        paddingTop: 15,
-    },
-    parrentView: {
-        flexDirection: 'row',
-    },
-    row: {
-        flexDirection: 'row',
         marginBottom: 10,
+        color: '#4578DF'
+    },
+    bioText: {
+        fontSize: 16,
+        marginBottom: 20,
+        color: 'black',
+    },
+    courseList: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        borderRadius: 5,
     },
     infoBoxWrapper: {
         borderBottomColor: '#dddddd',
@@ -198,19 +168,45 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    menuWrapper: {
-        marginTop: 10,
-    },
-    menuItem: {
+    row: {
         flexDirection: 'row',
-        paddingVertical: 15,
+        marginBottom: 15,
+    },
+    userInfoSection: {
         paddingHorizontal: 30,
     },
-    menuItemText: {
-        color: '#777777',
-        marginLeft: 20,
-        fontWeight: '600',
+    title: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        marginBottom: 20,
+    },
+    optionContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+    },
+    icon: {
+        marginRight: 10,
+    },
+    optionText: {
         fontSize: 16,
-        lineHeight: 26,
+        flex: 1,
+    },
+    arrowIcon: {
+        marginLeft: 10,
+    },
+    optionContainer1: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+        marginBottom: 100
     },
 });
+
+export default Profile;

@@ -1,20 +1,11 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import FeatherIcon from 'react-native-vector-icons/Feather';
 
-const Learning = () => {
+const Premium_Courses = () => {
   const navigation = useNavigation();
   return (
     <ScrollView>
-      <View style={{ backgroundColor: 'white', height: 50, marginBottom: 3, flexDirection: 'row'}}>
-        <View style={{justifyContent: 'center'}}>
-          <FeatherIcon name="arrow-left" size={24} />
-        </View>
-        <View style={{justifyContent: 'center',marginLeft: 15}}>
-          <Text style={{ fontSize: 20,}}>All Courses</Text>
-        </View>
-      </View>
       <View style={{ flexDirection: 'column' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <TouchableOpacity
@@ -67,7 +58,7 @@ const Learning = () => {
 
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Next')}
+          onPress={() => navigation.navigate('Next')}
             style={{
               flex: 0.8,
               height: 220,
@@ -91,7 +82,7 @@ const Learning = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('Vue')}
+          onPress={() => navigation.navigate('Vue')}
             style={{
               height: 220,
               elevation: 2,
@@ -117,7 +108,7 @@ const Learning = () => {
 
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Node')}
+          onPress={() => navigation.navigate('Node')}
             style={{
               flex: 0.8,
               height: 220,
@@ -141,7 +132,7 @@ const Learning = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('Docker')}
+          onPress={() => navigation.navigate('Docker')}
             style={{
               height: 220,
               elevation: 2,
@@ -167,7 +158,7 @@ const Learning = () => {
 
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('JavaScript')}
+          onPress={() => navigation.navigate('JavaScript')}
             style={{
               flex: 0.8,
               height: 220,
@@ -191,7 +182,7 @@ const Learning = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('HTML')}
+          onPress={() => navigation.navigate('HTML')}
             style={{
               height: 220,
               elevation: 2,
@@ -219,4 +210,4 @@ const Learning = () => {
   )
 }
 
-export default Learning;
+export default Premium_Courses

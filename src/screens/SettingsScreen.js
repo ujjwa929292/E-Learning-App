@@ -67,38 +67,6 @@ export default function Example() {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={styles.container}>
-                <View style={styles.profile}>
-                    <TouchableOpacity
-                        onPress={() => {
-                            // handle onPress
-                        }}>
-                        <View style={styles.profileAvatarWrapper}>
-                            <Image
-                                alt=""
-                                source={require('../images/user.png')}
-                                style={styles.profileAvatar}
-                            />
-
-                            <TouchableOpacity
-                                onPress={() =>
-                                    navigation.navigate('ProfileEdit')
-                                }>
-                                <View style={styles.profileAction}>
-                                    <FeatherIcon color="#fff" name="edit-3" size={15} />
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                    </TouchableOpacity>
-
-                    <View style={styles.profileBody}>
-                        <Text style={styles.profileName}>Ujjwal</Text>
-
-                        <Text style={styles.profileAddress}>
-                            uvij027@gmail.com
-                        </Text>
-                    </View>
-                </View>
-
                 {SECTIONS.map(({ header, items }) => (
                     <View style={styles.section} key={header}>
                         <Text style={styles.sectionHeader}>{header}</Text>
@@ -140,10 +108,10 @@ export default function Example() {
 
 const styles = StyleSheet.create({
     container: {
-        paddingVertical: 24,
+        paddingVertical: 10,
     },
     section: {
-        paddingHorizontal: 24,
+        paddingHorizontal: 20,
     },
     sectionHeader: {
         paddingVertical: 12,
